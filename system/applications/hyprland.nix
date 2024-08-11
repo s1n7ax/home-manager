@@ -1,5 +1,16 @@
 { pkgs, ... }:
 {
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+      preload = [ "~/.wallpaper/2" ];
+      wallpaper = "HDMI-A-1,~/.wallpaper/2";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     package = pkgs.hyprland;
     enable = true;
