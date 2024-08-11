@@ -10,6 +10,8 @@
     ../applications/neovim.nix
   ];
 
+  services.kdeconnect.enable = true;
+
   home.packages = with pkgs; [
 
     # file managers
