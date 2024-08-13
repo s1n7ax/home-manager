@@ -128,7 +128,7 @@
         "$mod, P, exec, fuzzel"
 
         "$amod, T, exec, firefox"
-        "$amod, S, exec, kitty -e vifm"
+        "$amod, S, exec, alacritty -e vifm"
         "$amod, R, exec, thunar"
         "$amod, Z, exec, slurp | grim -g - - | wl-copy -t image/png"
         ''$amod, X, exec, grim -t png ~/Pictures/"$(date +'screenshot %y-%m-%d %H:%M:%S').png"''
@@ -137,7 +137,7 @@
 
         "$smod, Q, exit,"
 
-        "$mod, Return, exec, kitty"
+        "$mod, Return, exec, alacritty"
 
         # window layouts
         "$mod, H, togglefloating,"
