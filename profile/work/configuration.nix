@@ -18,7 +18,6 @@ let
       env = true;
       web = true;
       ide = false;
-      multi-media = false;
     };
 
     camera = false;
@@ -28,6 +27,7 @@ let
     utility = true;
     terminal = true;
     players = false;
+    multi-media = false;
   };
 in
 {
