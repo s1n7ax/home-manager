@@ -127,12 +127,11 @@
         # run some applications
         "$mod, P, exec, fuzzel"
 
-        "$amod, A, exec, flatpak run org.mozilla.firefox"
-        "$amod, R, exec, alacritty -e vifm"
-        "$amod, S, exec, flatpak run org.kde.dolphin"
-        "$amod, T, exec, flatpak run md.obsidian.Obsidian"
+        "$amod, T, exec, firefox"
+        "$amod, S, exec, kitty -e vifm"
+        "$amod, R, exec, thunar"
         "$amod, Z, exec, slurp | grim -g - - | wl-copy -t image/png"
-        ''$amod, X, exec, slurp | grim -t png -g - ~/Pictures/"$(date +'screenshot %y-%m-%d %H:%M:%S').png"''
+        ''$amod, X, exec, grim -t png ~/Pictures/"$(date +'screenshot %y-%m-%d %H:%M:%S').png"''
 
         "$amod, O, exec, poweroff"
 
