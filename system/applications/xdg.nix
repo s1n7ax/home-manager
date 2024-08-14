@@ -1,7 +1,20 @@
-{ ... }:
+{ pkgs, ... }:
 {
   xdg = {
-    userDirs.enable = true;
+    enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+
+    portal = {
+      enable = true;
+      configPackages = [ pkgs.hyprland ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
+    };
     mime.enable = true;
     mimeApps = {
       enable = true;

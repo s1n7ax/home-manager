@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [ bibata-cursors ];
+
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -12,7 +14,6 @@
   };
 
   wayland.windowManager.hyprland = {
-    package = pkgs.hyprland;
     enable = true;
 
     xwayland.enable = true;
@@ -38,8 +39,10 @@
       exec-once = [ "swaybg -i .wallpaper/*" ];
 
       env = [
-        "XCURSOR_SIZE,35"
-        "GDK_SCALE,2"
+        "XCURSOR_THEME,Bibata-Modern-Ice"
+        "XCURSOR_SIZE,32"
+        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+        "HYPRCURSOR_SIZE,32"
       ];
 
       input = {
@@ -195,6 +198,19 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+
+      # "plugin:dynamic-cursors" = {
+      #   enabled = true;
+      #   mode = "none";
+      #   shake = {
+      #     enabled = true;
+      #     threshold = 0.5;
+      #     factor = 4;
+      #     effects = false;
+      #     nearest = true;
+      #     ipc = true;
+      #   };
+      # };
     };
   };
 }

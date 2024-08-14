@@ -8,6 +8,9 @@
     ../applications/xdg.nix
     ../applications/zathura.nix
     ../applications/neovim.nix
+    ../applications/cursor.nix
+    ../applications/hyprland.nix
+    ../applications/gtk.nix
   ];
 
   services.kdeconnect.enable = true;

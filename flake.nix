@@ -56,6 +56,7 @@
 
           extraSpecialArgs = {
             inherit
+              inputs
               pkgs-devenv
               pkgs-my
               pkgs-stable
@@ -74,6 +75,7 @@
 
           extraSpecialArgs = {
             inherit
+              inputs
               pkgs-devenv
               pkgs-my
               pkgs-stable
