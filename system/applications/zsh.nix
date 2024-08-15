@@ -96,10 +96,10 @@
       cdn = "cd /etc/nixos";
 
       # home manager
-      hm = "cd ~/.config/home-manager && nix flake update && home-manager --impure switch --refresh";
+      hm = "cd ~/Workspace/home-manager && nix flake update && home-manager --impure switch --refresh --flake ./#desktop";
 
       # nixos
-      nixos = "cd /etc/nixos && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake .";
+      nixos = "cd ~/Workspace/nixos && git diff --quiet && git diff --cached --quiet && sudo nix flake update && sudo nixos-rebuild switch --upgrade --flake ./#desktop";
 
       nixos-clean = "nix-collect-garbage  --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     };
