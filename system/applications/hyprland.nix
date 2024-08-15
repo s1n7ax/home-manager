@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ settings, ... }:
+let
+  cursor_name = settings.cursor.name;
+  cursor_size = builtins.toString settings.cursor.size;
+in
 {
-  home.packages = with pkgs; [ bibata-cursors ];
-
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -39,10 +41,10 @@
       exec-once = [ "swaybg -i .wallpaper/*" ];
 
       env = [
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,32"
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-        "HYPRCURSOR_SIZE,32"
+        "XCURSOR_THEME,${cursor_name}"
+        "XCURSOR_SIZE,${cursor_size}"
+        "HYPRCURSOR_THEME,${cursor_name}"
+        "HYPRCURSOR_SIZE,${cursor_size}"
       ];
 
       input = {

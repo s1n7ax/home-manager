@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ settings, pkgs, ... }:
 {
   gtk = {
     enable = true;
     iconTheme = {
-      name = "breeze-dark";
-      package = pkgs.libsForQt5.breeze-icons;
+      name = "Tela-circle-dark";
+      package = pkgs.tela-circle-icon-theme;
     };
     theme = {
       name = "Breeze-Dark";
@@ -12,8 +12,7 @@
     };
 
     cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      size = 32;
+      inherit (settings.cursor) name package size;
     };
   };
 

@@ -9,7 +9,6 @@
     ../applications/zathura.nix
     ../applications/neovim.nix
     ../applications/cursor.nix
-    ../applications/hyprland.nix
     ../applications/styles.nix
   ];
 

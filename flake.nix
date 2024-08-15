@@ -38,10 +38,14 @@
       #                              SETTINGS                              #
       #--------------------------------------------------------------------#
       settings = {
-        profile = "desktop";
         username = "s1n7ax";
         shell = "zsh";
         wm = "hyprland";
+        cursor = {
+          name = "Bibata-Modern-Ice";
+          package = pkgs.bibata-cursors;
+          size = 32;
+        };
       };
     in
     {
