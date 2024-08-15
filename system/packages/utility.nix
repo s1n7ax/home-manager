@@ -17,6 +17,7 @@
 
   home.packages = with pkgs; [
 
+    pass
     # file managers
     xfce.thunar
     xfce.tumbler
