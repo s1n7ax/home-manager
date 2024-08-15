@@ -10,7 +10,7 @@
     ../applications/neovim.nix
     ../applications/cursor.nix
     ../applications/hyprland.nix
-    ../applications/gtk.nix
+    ../applications/styles.nix
   ];
 
   services.kdeconnect.enable = true;
