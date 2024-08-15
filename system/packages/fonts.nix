@@ -1,6 +1,20 @@
 { pkgs, ... }:
 {
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [
+        "Noto Sans Mono"
+        "CaskaydiaCove Nerd Font Mono"
+      ];
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+
+    };
+  };
+
   home.packages = with pkgs; [
     noto-fonts
     noto-fonts-extra
