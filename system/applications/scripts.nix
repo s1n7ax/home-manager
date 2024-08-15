@@ -232,5 +232,10 @@
       		-f v4l2 \
       		"/dev/$(ls -1 /sys/devices/virtual/video4linux)"
     '')
+
+    (writeShellScriptBin "font-menu" ''
+      set -euo pipefail
+      fc-list --format="%{family[0]}\n" | sort | uniq | fzf | tr -s \n | tr -s [:space:] | wl-copy
+    '')
   ];
 }
