@@ -30,6 +30,7 @@
     ../packages/terminal.nix
     ../packages/players.nix
     ../packages/multi-media.nix
+    ../packages/office.nix
   ];
 
 }
