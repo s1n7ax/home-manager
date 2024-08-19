@@ -130,7 +130,7 @@ in
 
       bind = [
         # run some applications
-        "$mod, P, exec, fuzzel"
+        "$mod, P, exec, rofi -show drun"
 
         "$amod, T, exec, firefox"
         "$amod, S, exec, alacritty -e vifm"
