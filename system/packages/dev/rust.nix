@@ -5,21 +5,15 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.rust = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.rust.enable = lib.mkEnableOption "rust development environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.rust (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.rust.enable {
+    home.packages = with pkgs; [
       cargo
       cargo-leptos
       cargo-generate
       rust-analyzer
       stylance-cli
-    ]
-  );
+    ];
+  };
 }

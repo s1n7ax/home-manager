@@ -7,22 +7,15 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.container = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.container.enable = lib.mkEnableOption "container environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.container (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.container.enable {
+    home.packages = with pkgs; [
       pkgs-devenv.devenv
       pkgs-my.devcontainer
       lazydocker
       dockerfile-language-server-nodejs
       hadolint
-    ]
-  );
-
+    ];
+  };
 }

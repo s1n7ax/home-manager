@@ -5,12 +5,7 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.camera = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.camera.enable = lib.mkEnableOption "camera related packages";
 
-  config.home.packages = lib.optionals config.s1n7ax.camera (with pkgs; [ gphoto2 ]);
+  config = lib.mkIf config.package.camera.enable { home.packages = with pkgs; [ gphoto2 ]; };
 }

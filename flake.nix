@@ -46,6 +46,14 @@
           package = pkgs.bibata-cursors;
           size = 32;
         };
+        font = {
+          name = "JetBrainsMonoNL Nerd Font Mono";
+          size = "28";
+        };
+        icon = {
+          name = "Tela-circle-dark";
+          package = pkgs.tela-circle-icon-theme;
+        };
       };
     in
     {

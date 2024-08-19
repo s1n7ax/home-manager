@@ -5,19 +5,12 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.lua = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.lua.enable = lib.mkEnableOption "lua depelopment environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.lua (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.lua.enable {
+    home.packages = with pkgs; [
       stylua
       lua-language-server
-      # luajitPackages.luacheck
-    ]
-  );
+    ];
+  };
 }

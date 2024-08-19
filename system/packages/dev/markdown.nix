@@ -5,21 +5,15 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.markdown = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.markdown.enable = lib.mkEnableOption "markdown environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.markdown (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.markdown.enable {
+    home.packages = with pkgs; [
       cbfmt
       marksman
       markdownlint-cli
       markdownlint-cli2
       python311Packages.mdformat
-    ]
-  );
+    ];
+  };
 }

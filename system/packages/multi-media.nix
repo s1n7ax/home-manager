@@ -5,19 +5,13 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.multi-media = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.multi-media.enable = lib.mkEnableOption "multi-media packages";
 
-  config.home.packages = lib.optionals config.s1n7ax.multi-media (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.multi-media.enable {
+    home.packages = with pkgs; [
       gimp
       handbrake
-    ]
-  );
+    ];
+  };
 
 }

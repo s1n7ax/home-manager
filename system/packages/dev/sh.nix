@@ -5,13 +5,8 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.sh = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.sh (with pkgs; [ shfmt ]);
+  options.package.dev.sh.enable = lib.mkEnableOption "sh/bash development environment";
 
+  config = lib.mkIf config.package.dev.sh.enable { home.packages = with pkgs; [ shfmt ]; };
 }

@@ -5,19 +5,13 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.web = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.web.enable = lib.mkEnableOption "web development environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.web (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.web.enable {
+    home.packages = with pkgs; [
       jq
       httpie
       dart-sass
-    ]
-  );
+    ];
+  };
 }

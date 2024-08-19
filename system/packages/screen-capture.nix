@@ -8,18 +8,12 @@
 
   imports = [ ../applications/obs-studio ];
 
-  options = {
-    s1n7ax.screen-capture = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.screen-capture.enable = lib.mkEnableOption "screen capture packages";
 
-  config.home.packages = lib.optionals config.s1n7ax.screen-capture (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.screen-capture.enable {
+    home.packages = with pkgs; [
       grim
       slurp
-    ]
-  );
+    ];
+  };
 }

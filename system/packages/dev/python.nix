@@ -5,21 +5,14 @@
   ...
 }:
 {
+  options.package.dev.python.enable = lib.mkEnableOption "python development environment";
 
-  options = {
-    s1n7ax.dev.python = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
-
-  config.home.packages = lib.optionals config.s1n7ax.dev.python (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.python.enable {
+    home.packages = with pkgs; [
       (python3.withPackages (py-packages: with py-packages; [ pip ]))
       isort
       black
       virtualenv
-    ]
-  );
+    ];
+  };
 }

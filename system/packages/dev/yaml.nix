@@ -5,12 +5,9 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.yaml = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.yaml.enable = lib.mkEnableOption "yaml environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.yaml (with pkgs; [ yaml-language-server ]);
+  config = lib.mkIf config.package.dev.yaml.enable {
+    home.packages = with pkgs; [ yaml-language-server ];
+  };
 }

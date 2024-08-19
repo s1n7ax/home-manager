@@ -5,10 +5,7 @@
   ...
 }:
 {
-  options = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-  };
+  options.package.office.enable = lib.mkEnableOption "office packages";
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -17,12 +14,11 @@
       "teams"
     ];
 
-  config.home.packages = lib.optionals config.s1n7ax.office (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.office.enable {
+    home.packages = with pkgs; [
       slack
       teams-for-linux
       insomnia
-    ]
-  );
+    ];
+  };
 }

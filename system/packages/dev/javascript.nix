@@ -5,16 +5,10 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.javascript = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.javascript.enable = lib.mkEnableOption "javascript depelopment environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.javascript (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.javascript.enable {
+    home.packages = with pkgs; [
       nodejs_22
       nodePackages.pnpm
       yarn
@@ -25,7 +19,6 @@
       typescript
       eslint_d
       nodePackages.typescript-language-server
-    ]
-  );
-
+    ];
+  };
 }

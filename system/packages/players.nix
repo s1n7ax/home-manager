@@ -5,12 +5,7 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.players = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.players.enable = lib.mkEnableOption "video/audio player packages";
 
-  config.home.packages = lib.optionals config.s1n7ax.players (with pkgs; [ vlc ]);
+  config = lib.mkIf config.package.players.enable { home.packages = with pkgs; [ vlc ]; };
 }

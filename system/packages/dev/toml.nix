@@ -5,12 +5,7 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.toml = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.toml.enable = lib.mkEnableOption "toml development environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.toml (with pkgs; [ taplo ]);
+  config = lib.mkIf config.package.dev.toml.enable { home.packages = with pkgs; [ taplo ]; };
 }

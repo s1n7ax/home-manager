@@ -5,7 +5,7 @@
     ../../system/packages/default.nix
   ];
 
-  s1n7ax = {
+  package = {
     office = true;
 
     dev = {

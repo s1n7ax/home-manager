@@ -5,18 +5,13 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.c = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.c.enable = lib.mkEnableOption "c/c++ development environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.c (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.c.enable {
+    home.packages = with pkgs; [
       gcc
       gnumake
-    ]
-  );
+    ];
+  };
+
 }

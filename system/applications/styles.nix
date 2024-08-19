@@ -3,8 +3,7 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Tela-circle-dark";
-      package = pkgs.tela-circle-icon-theme;
+      inherit (settings.icon) name package;
     };
     theme = {
       name = "Breeze-Dark";

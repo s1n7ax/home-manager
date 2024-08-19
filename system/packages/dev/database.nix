@@ -5,18 +5,12 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.database = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.database.enable = lib.mkEnableOption "database environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.database (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.database.enable {
+    home.packages = with pkgs; [
       postgresql
       sqlite
-    ]
-  );
+    ];
+  };
 }

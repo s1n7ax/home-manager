@@ -5,33 +5,32 @@
     ../../system/packages/default.nix
   ];
 
-  home.username = settings.username;
-  home.homeDirectory = "/home/${settings.username}";
-  home.stateVersion = "24.05";
-
-  s1n7ax = {
-    camera = true;
-    screen-capture = true;
-    players = true;
-    multi-media = true;
+  package = {
+    camera.enable = true;
+    screen-capture.enable = true;
+    players.enable = true;
+    multi-media.enable = true;
 
     dev = {
-      c = true;
-      container = true;
-      java = true;
-      javascript = true;
-      lua = true;
-      markdown = true;
-      nix = true;
-      python = true;
-      rust = true;
-      sh = true;
-      toml = true;
-      yaml = true;
-      database = true;
-      web = true;
-      ide = true;
+      c.enable = true;
+      container.enable = true;
+      java.enable = true;
+      javascript.enable = true;
+      lua.enable = true;
+      markdown.enable = true;
+      nix.enable = true;
+      python.enable = true;
+      rust.enable = true;
+      sh.enable = true;
+      toml.enable = true;
+      yaml.enable = true;
+      database.enable = true;
+      web.enable = true;
+      ide.enable = true;
     };
   };
 
+  home.username = settings.username;
+  home.homeDirectory = "/home/${settings.username}";
+  home.stateVersion = "24.05";
 }

@@ -5,20 +5,13 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.nix = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.nix.enable = lib.mkEnableOption "nix development environment";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.nix (
-    with pkgs;
-    [
+  config = lib.mkIf config.package.dev.nix.enable {
+    home.packages = with pkgs; [
       nixpkgs-fmt
       nil
       nixfmt-rfc-style
-    ]
-  );
-
+    ];
+  };
 }

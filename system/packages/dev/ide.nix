@@ -5,12 +5,7 @@
   ...
 }:
 {
-  options = {
-    s1n7ax.dev.ide = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  options.package.dev.ide.enable = lib.mkEnableOption "IDEs";
 
-  config.home.packages = lib.optionals config.s1n7ax.dev.ide (with pkgs; [ zed-editor ]);
+  config = lib.mkIf config.package.dev.ide.enable { home.packages = with pkgs; [ zed-editor ]; };
 }
