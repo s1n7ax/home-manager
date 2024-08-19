@@ -11,6 +11,19 @@
       "$1";
     '')
 
+    (writeShellScriptBin "pass-menu" ''
+      record=$(
+        fd \
+          --extension 'gpg' \
+          --type f \
+          --base-directory ~/.password-store \
+        | sd '.gpg' "" \
+        | fzf
+      )
+
+      pass -c "$record"
+    '')
+
     (writeShellScriptBin "project-menu" ''
       quick_exit ()
       {
