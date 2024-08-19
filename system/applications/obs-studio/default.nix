@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.obs-studio = {
-    enable = true;
+    enable = config.s1n7ax.screen-capture;
     plugins = [ pkgs.obs-studio-plugins.obs-source-record ];
   };
 
