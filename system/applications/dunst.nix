@@ -52,7 +52,7 @@ in
         stack_duplicates = true;
         hide_duplicate_count = false;
         show_indicators = "yes";
-        icon_theme = "Tela-circle-dracula";
+        icon_theme = settings.icon.name;
         icon_position = "left";
         min_icon_size = 32;
         max_icon_size = 128;
