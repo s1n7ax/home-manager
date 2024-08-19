@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -13,7 +14,7 @@
       nodePackages.pnpm
       yarn
       emmet-language-server
-      vscode-langservers-extracted
+      pkgs-stable.vscode-langservers-extracted
       tailwindcss-language-server
       prettierd
       typescript
