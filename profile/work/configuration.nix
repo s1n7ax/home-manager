@@ -6,16 +6,16 @@
   ];
 
   package = {
-    office = true;
+    office.enable = true;
 
     dev = {
-      container = true;
-      javascript = true;
-      lua = true;
-      markdown = true;
-      nix = true;
-      database = true;
-      web = true;
+      container.enable = true;
+      javascript.enable = true;
+      lua.enable = true;
+      markdown.enable = true;
+      nix.enable = true;
+      database.enable = true;
+      web.enable = true;
     };
   };
 
