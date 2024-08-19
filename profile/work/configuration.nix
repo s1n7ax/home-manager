@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ lib, settings, ... }:
 let
   package-settings = {
     dev = {
@@ -35,7 +35,7 @@ in
     ./git.nix
     ./office-packages.nix
 
-    (import ../../system/packages/default.nix { inherit settings package-settings; })
+    (import ../../system/packages/default.nix { inherit lib settings package-settings; })
   ];
 
   home.username = settings.username;

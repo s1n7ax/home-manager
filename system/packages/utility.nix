@@ -5,6 +5,7 @@
     ../applications/home-manager.nix
     ../applications/vifm.nix
     ../applications/fuzzel.nix
+    ../applications/rofi.nix
     ../applications/xdg.nix
     ../applications/zathura.nix
     ../applications/neovim.nix

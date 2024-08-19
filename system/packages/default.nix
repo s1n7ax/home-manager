@@ -1,8 +1,11 @@
-{ settings, package-settings, ... }:
+{
+  lib,
+  settings,
+  package-settings,
+  ...
+}:
 let
   get-pkg = name: if package-settings.${name} then [ ./${name}.nix ] else [ ];
-
-  get-dev-pkg = name: if package-settings.dev.${name} then [ ./dev/${name}.nix ] else [ ];
 
   # other packaegs
   camera = get-pkg "camera";
@@ -13,55 +16,38 @@ let
   terminal = get-pkg "terminal";
   players = get-pkg "players";
   multi-media = get-pkg "multi-media";
-
-  # dev packages
-  env = get-dev-pkg "env";
-  c = get-dev-pkg "c";
-  container = get-dev-pkg "container";
-  java = get-dev-pkg "java";
-  javascript = get-dev-pkg "javascript";
-  lua = get-dev-pkg "lua";
-  markdown = get-dev-pkg "markdown";
-  nix = get-dev-pkg "nix";
-  python = get-dev-pkg "python";
-  rust = get-dev-pkg "rust";
-  sh = get-dev-pkg "sh";
-  toml = get-dev-pkg "toml";
-  yaml = get-dev-pkg "yaml";
-  database = get-dev-pkg "database";
-  web = get-dev-pkg "web";
-  ide = get-dev-pkg "ide";
 in
 {
+  options = {
+    my.arb.option = lib.mkOption {
+      type = lib.types.str;
+      default = "test";
+    };
+  };
 
   imports =
     [
       ../applications/mpv.nix
-      # ../applications/systemd.nix
+      ../applications/${settings.shell}.nix
+      ../applications/${settings.wm}.nix
+
+      ../packages/dev/c.nix
+      ../packages/dev/container.nix
+      ../packages/dev/java.nix
+      ../packages/dev/javascript.nix
+      ../packages/dev/lua.nix
+      ../packages/dev/markdown.nix
+      ../packages/dev/nix.nix
+      ../packages/dev/python.nix
+      ../packages/dev/rust.nix
+      ../packages/dev/sh.nix
+      ../packages/dev/toml.nix
+      ../packages/dev/yaml.nix
+      ../packages/dev/database.nix
+      ../packages/dev/env.nix
+      ../packages/dev/web.nix
+      ../packages/dev/ide.nix
     ]
-    # shell
-    ++ [ ../applications/${settings.shell}.nix ]
-
-    # wm
-    ++ [ ../applications/${settings.wm}.nix ]
-
-    # dev packages
-    ++ c
-    ++ container
-    ++ java
-    ++ javascript
-    ++ lua
-    ++ markdown
-    ++ nix
-    ++ python
-    ++ rust
-    ++ sh
-    ++ toml
-    ++ yaml
-    ++ database
-    ++ env
-    ++ web
-    ++ ide
 
     # other packaegs
     ++ camera
@@ -72,4 +58,5 @@ in
     ++ terminal
     ++ players
     ++ multi-media;
+  # ++ (pkgs.lib.list.optionals settings.multi-media [ ./multi-media.nix ]);
 }
